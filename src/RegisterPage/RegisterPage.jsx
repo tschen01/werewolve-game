@@ -15,6 +15,18 @@ function RegisterPage() {
     const registering = useSelector(state => state.registration.registering);
     const dispatch = useDispatch();
 
+    const fixSpacing = {
+        color: "red",
+        whiteSpace: 'nowrap'
+    };
+
+    const increaseSize1 = {
+        fontSize: '4em',
+        position: 'relative',
+        marginBottom: '.5em',
+        marginLeft: '-.6em'
+    };
+
     // reset login status
     useEffect(() => {
         dispatch(userActions.logout());
@@ -35,8 +47,8 @@ function RegisterPage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-2">
-            <h2>Register</h2>
+        <div  style = {fixSpacing}>
+            <h1 style = {increaseSize1}>Register</h1>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>First Name</label>

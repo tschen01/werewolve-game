@@ -3,8 +3,24 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
+import styles from './LoginPage.css';
 
 function LoginPage() {
+
+    const divStyle = {
+        color: "red"
+    };
+    const increaseSize1 = {
+        fontSize: '4em',
+        position: 'relative',
+        marginTop: '-.5em',
+        marginBottom: '1em',
+        marginLeft: '-.2em'
+    };
+    const increaseSize2 = {
+        fontSize: '3em'
+    };
+    
     const [inputs, setInputs] = useState({
         username: '',
         password: ''
@@ -34,10 +50,10 @@ function LoginPage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-2">
-            <h2>Login</h2>
+        <div >
+            <h1 style = {increaseSize1}>Login</h1>
             <form name="form" onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="form-group" >
                     <label>Username</label>
                     <input type="text" name="username" value={username} onChange={handleChange} className={'form-control' + (submitted && !username ? ' is-invalid' : '')} />
                     {submitted && !username &&
@@ -56,7 +72,7 @@ function LoginPage() {
                         {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
                         Login
                     </button>
-                    <Link to="/register" className="btn btn-link">Register</Link>
+                    <Link to="/register" style = {divStyle} className="btn btn-link">Register</Link>
                 </div>
             </form>
         </div>

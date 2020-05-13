@@ -2,23 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>React Hooks + Redux - User Registration and Login Example & Tutorial</title>
+    <title>WereWolf</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/werewolfLogo.png" />
+    <link rel="icon" href="public/wolficon.ico" />
     <style>
         a { cursor: pointer; }
+        .hero-image {
+            background-image: url("/werewolf.jpg");
+            background-color: #cccccc;
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            object-fit: cover;
+            position: relative;
+        }
+        .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: red;
+        }
     </style>
 </head>
-<body>
-    <div id="app"></div>
 
-    <!-- credits -->
-    <div class="text-center">
-        <p>
-            <a href="https://jasonwatmore.com/post/2020/03/02/react-hooks-redux-user-registration-and-login-tutorial-example" target="_top">React Hooks + Redux - User Registration and Login Tutorial & Example</a>
-        </p>
-        <p>
-            <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-        </p>
+<body>
+    <div class="hero-image">
+        <div class="hero-text">
+            <div id="app"></div>
+            <iframe width="0" height="0" src="https://www.youtube.com/embed/VaAacrLk4gE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+        </div>
     </div>
 </body>
+
 </html>
