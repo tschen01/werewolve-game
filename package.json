@@ -8,6 +8,7 @@
     "license": "MIT",
     "scripts": {
         "build": "webpack --mode production",
+        "heroku-prebuild": "npm install --dev",
         "start": "webpack-dev-server --open"
     },
     "dependencies": {
