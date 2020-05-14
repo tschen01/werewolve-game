@@ -15,7 +15,7 @@ async function setup() {
       return console.log(err.message);
     }
     else {
-      console.log(`users table created`);
+      //console.log(`users table created`);
     }
   });
 
@@ -25,7 +25,7 @@ async function setup() {
       return console.log(err.message);
     }
     else {
-      console.log(`players table created`);
+      //console.log(`players table created`);
     }
   });
 
@@ -36,7 +36,7 @@ async function setup() {
       return console.log(err.message);
     }
     else {
-      console.log(`gameTypes table created`);
+      //console.log(`gameTypes table created`);
     }
   });
 
@@ -47,7 +47,7 @@ async function setup() {
       return console.log(err.message);
     }
     else {
-      console.log(`gameRooms table created`);
+      //console.log(`gameRooms table created`);
     }
   });
 
@@ -58,7 +58,7 @@ async function setup() {
       return console.log("err: " + err);
     }
     else {
-      console.log(`characters table created`);
+      //console.log(`characters table created`);
     }
   });
 
@@ -68,7 +68,7 @@ async function setup() {
       return console.log("err: " + err);
     }
     else {
-      console.log(`characters created`);
+      //console.log(`characters created`);
     }
   });
 
