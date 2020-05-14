@@ -9,7 +9,7 @@ const User = function(user) {
   this.email = user.email;
 };
 
-User.register = (newUser, result) => {
+User.create = (newUser, result) => {
   const sql = new sqlite3.Database(dbPath);
   console.log(newUser);
   sql.run("INSERT or IGNORE INTO users (Username, Password, Email) VALUES (?,?,?)", newUser.username, newUser.password, newUser.email, (err, res) => {
@@ -21,33 +21,6 @@ User.register = (newUser, result) => {
 
     console.log("created user: ", { ...newUser });
     result(null, { ...newUser });
-  });
-  sql.close();
-};
-
-User.login = (username, password, result) => {
-  const sql = new sqlite3.Database(dbPath);
-  sql.run(`SELECT * FROM users WHERE Username = ${username}`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-
-    if (res.length && res[0].password !== password) {
-      console.log("found user with wrong password: ", res[0]);
-      result({ kind: "Unauthorized" }, null);
-      return;
-    }
-
-    if (res.length) {
-      console.log("found user: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    // not found user with the username
-    result({ kind: "not_found" }, null);
   });
   sql.close();
 };

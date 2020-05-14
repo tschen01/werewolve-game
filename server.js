@@ -1,15 +1,34 @@
-var express = require('express')
-var path = require('path')
-var serveStatic = require('serve-static')
+﻿require('rootpath')();
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
+const path = require('path');
+const serveStatic = require('serve-static');
+const db = require('./server/models/db');
 
-var app = express()
 app.use(serveStatic(path.join(__dirname, 'dist')))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
-require('./server/models/db');
-//require('./server/routes/lobby');
-require('./server/routes/character.route')(app);
-require('./server/routes/user.route')(app);
+// set up sqlite3 db
+db.setup();
 
-var port = process.env.PORT || 8000
-app.listen(port)
-console.log('server started ' + port)
+// use JWT auth to secure the api
+app.use(jwt());
+
+// api routes
+app.use('/users', require('./server/routes/user.route'));
+app.use('/characters', require('./server/routes/character.route'));
+
+// global error handler
+app.use(errorHandler);
+
+// start server
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 8000;
+const server = app.listen(port, function () {
+    console.log('Server listening on port ' + port);
+});
